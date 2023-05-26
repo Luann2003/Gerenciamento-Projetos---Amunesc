@@ -73,15 +73,15 @@ public class FrmPrincipalView extends JFrame {
 		
 		
 		
-		JMenuItem mnNovoprojeto = new JMenuItem("Novo Projeto");
-		mnNovoprojeto.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				FrmNovoProjeto obj = new FrmNovoProjeto();
-				obj.main(null);
-			}
-		});
-		mnNovoprojeto.setHorizontalAlignment(SwingConstants.LEFT);
-		mnUsuario.add(mnNovoprojeto);
+		//JMenuItem mnNovoprojeto = new JMenuItem("Novo Projeto");
+		//mnNovoprojeto.addActionListener(new ActionListener() {
+			//public void actionPerformed(ActionEvent e) {
+			//	FrmNovoProjeto obj = new FrmNovoProjeto();
+			//	obj.main(null);
+		//	}
+		//});
+		//mnNovoprojeto.setHorizontalAlignment(SwingConstants.LEFT);
+		//mnUsuario.add(mnNovoprojeto);
 		
 		
 		
