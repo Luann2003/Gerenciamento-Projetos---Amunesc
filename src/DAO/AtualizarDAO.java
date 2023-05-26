@@ -32,14 +32,14 @@ public class AtualizarDAO {
 				+ "                WHEN id = 2 THEN ? \r\n"
 				+ "                ELSE entrega \r\n"
 				+ "              END\r\n"
-				+ "WHERE id = 1;\r\n"
+				+ "WHERE id = 2;\r\n"
 				+ "";
 
 		try {
 			conn = new ConexaoDAO().conectaBD();
 			if (conn != null) {
 				pstm = conn.prepareStatement(sql);
-				pstm.setString(1, tabeladto.getResponsavel());
+				pstm.setString(1, tabeladto.getRespo2());
 				pstm.setString(2, tabeladto.getStatus());
 				pstm.setString(3, tabeladto.getPrazoEstimado());
 				pstm.setString(4, tabeladto.getEntrega());

@@ -8,8 +8,17 @@ public class TabelaDTO {
 	private String status;
 	private String PrazoEstimado;
 	private String entrega;
+	private String respo2;
 	
 	
+
+	public String getRespo2() {
+		return respo2;
+	}
+
+	public void setRespo2(String respo2) {
+		this.respo2 = respo2;
+	}
 
 	public String getResponsavel() {
 		return responsavel;

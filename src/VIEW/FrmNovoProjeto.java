@@ -182,7 +182,7 @@ public class FrmNovoProjeto extends JFrame {
 
 			TabelaDTO tabeladto = new TabelaDTO();
 
-			tabeladto.setResponsavel(respo);
+			tabeladto.setRespo2(respo);
 			tabeladto.setStatus(status);
 			tabeladto.setPrazoEstimado(preparo);
 			tabeladto.setEntrega(entrega);
@@ -244,7 +244,7 @@ public class FrmNovoProjeto extends JFrame {
 
 			TabelaDTO tabeladto = new TabelaDTO();
 
-			tabeladto.setResponsavel(respo);
+			tabeladto.setRespo2(respo);
 			tabeladto.setStatus(status);
 			tabeladto.setPrazoEstimado(preparo);
 			tabeladto.setEntrega(entrega);
