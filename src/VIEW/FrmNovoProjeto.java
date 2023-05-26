@@ -85,12 +85,12 @@ public class FrmNovoProjeto extends JFrame {
         textTop3.setBounds(185, 89, 86, 29);
         contentPane.add(textTop3);
         
-        JButton btnatualizar = new JButton("atualizar");
+        JButton btnatualizar = new JButton("Inserir");
         btnatualizar.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		
         		try {
-					atualizar();
+					inserir();
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -141,6 +141,16 @@ public class FrmNovoProjeto extends JFrame {
         table_1.getColumnModel().getColumn(0).setResizable(false);
         scrollPane_1.setViewportView(table_1);
         
+        JButton btnNewButton = new JButton("Atualizar");
+        btnNewButton.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		atualizar();
+        	}
+        });
+        btnNewButton.setForeground(Color.RED);
+        btnNewButton.setBounds(122, 210, 89, 23);
+        contentPane.add(btnNewButton);
+        
         carregarDados();
     }
     
@@ -158,7 +168,7 @@ public class FrmNovoProjeto extends JFrame {
         });
     }
     
-    public void atualizar() throws SQLException {
+    public void inserir() throws SQLException {
     	
     	String respo, status, preparo, entrega;
     	for(int i = 0; i<1; i++) {
@@ -206,10 +216,41 @@ public class FrmNovoProjeto extends JFrame {
     	
         // Recupere os dados do banco de dados e armazene-os em variáveis ou objetos
         String valorCampoRe1 = dao.recuperarValorDoBancoDeDadosRe1();
+        String valorCampoRe2 = dao.recuperarValorDoBancoStatus();
+        String valorCampoRe3 = dao.recuperarValorDoBancoPrazo();
+        String valorCampoRe4 = dao.recuperarValorDoBancoEntrega();
       
         // Atribua os valores recuperados aos campos de texto correspondentes
         textRe1.setText(valorCampoRe1);
+        textRe2.setText(valorCampoRe2);
+        textRe3.setText(valorCampoRe3);
+        textRe4.setText(valorCampoRe4);
     
     }
-
+    
+    private void atualizar() {
+    	
+    	String respo, status, preparo, entrega;
+    	
+    	for(int i = 0; i<1; i++) {
+        	
+        	respo = textRe1.getText();
+        	status = textRe2.getText();
+        	preparo = textRe3.getText();
+        	entrega = textRe4.getText();
+        
+        	
+        	TabelaDTO tabeladto = new TabelaDTO();
+        	
+        	tabeladto.setResponsavel(respo);
+        	tabeladto.setStatus(status);
+        	tabeladto.setPrazoEstimado(preparo);
+        	tabeladto.setEntrega(entrega);
+        	
+        	
+        	ProjetosDAO dao = new ProjetosDAO();
+        	dao.atualizar(tabeladto);
+        	}
+    	
+    }
 }
