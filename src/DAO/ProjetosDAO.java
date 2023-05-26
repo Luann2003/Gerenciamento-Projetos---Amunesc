@@ -7,13 +7,13 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import DTO.TabelaDTO;
 
-public class ProjetosDAO {
-	
+public class ProjetosDAO extends MostraDados {
+
 	private Connection conn;
 	private PreparedStatement pstm;
-	
+
 	public void tabela(TabelaDTO tabeladto) {
-		
+
 		String sql = "INSERT INTO projetos (responsável, status, prazo, entrega) VALUES (?, ?, ?, ?)";
 
 		try {
@@ -24,7 +24,7 @@ public class ProjetosDAO {
 				pstm.setString(2, tabeladto.getStatus());
 				pstm.setString(3, tabeladto.getPrazoEstimado());
 				pstm.setString(4, tabeladto.getEntrega());
-				
+
 				pstm.execute();
 				pstm.close();
 				conn.close();
@@ -35,7 +35,7 @@ public class ProjetosDAO {
 			JOptionPane.showMessageDialog(null, "Erro ao inserir dados no banco de dados: " + e);
 		}
 	}
-	
+
 	public String recuperarValorDoBancoDeDadosRe1() {
 		conn = new ConexaoDAO().conectaBD();
 		String valor = null;
@@ -57,6 +57,7 @@ public class ProjetosDAO {
 
 		return valor;
 	}
+
 	public String recuperarValorDoBancoStatus() {
 		conn = new ConexaoDAO().conectaBD();
 		String valor = null;
@@ -78,7 +79,7 @@ public class ProjetosDAO {
 
 		return valor;
 	}
-	
+
 	public String recuperarValorDoBancoPrazo() {
 		conn = new ConexaoDAO().conectaBD();
 		String valor = null;
@@ -100,7 +101,7 @@ public class ProjetosDAO {
 
 		return valor;
 	}
-	
+
 	public String recuperarValorDoBancoEntrega() {
 		conn = new ConexaoDAO().conectaBD();
 		String valor = null;
@@ -122,9 +123,9 @@ public class ProjetosDAO {
 
 		return valor;
 	}
-	
+
 	public void atualizar(TabelaDTO tabeladto) {
-		
+
 		String sql = "UPDATE projetos\r\n"
 				+ "SET responsável = CASE \r\n"
 				+ "                    WHEN id = 1 THEN ? \r\n"
@@ -145,8 +146,6 @@ public class ProjetosDAO {
 				+ "WHERE id = 1;\r\n"
 				+ "";
 
-		
-
 		try {
 			conn = new ConexaoDAO().conectaBD();
 			if (conn != null) {
@@ -155,8 +154,7 @@ public class ProjetosDAO {
 				pstm.setString(2, tabeladto.getStatus());
 				pstm.setString(3, tabeladto.getPrazoEstimado());
 				pstm.setString(4, tabeladto.getEntrega());
-	
-				
+
 				pstm.execute();
 				pstm.close();
 				conn.close();
@@ -166,9 +164,7 @@ public class ProjetosDAO {
 		} catch (SQLException e) {
 			JOptionPane.showMessageDialog(null, "Erro ao inserir dados no banco de dados: " + e);
 		}
-	
-		
-		
+
 	}
-	
+
 }
